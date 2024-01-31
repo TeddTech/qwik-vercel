@@ -19,17 +19,17 @@ export default component$(() => {
 	const posts = useBlogPosts();
 	const loc = useLocation();
 	const searchParamQuery = loc.url.searchParams.get("q") || "";
-  return (
-    <>
-     		<div class="w-full max-w-5xl mt-16">
-				<Form>
-					<input
-						name="q"
-						defaultValue={searchParamQuery}
-						placeholder="Search..."
-						class="w-full rounded-lg p-2 dark:text-purple-950 text-blue-600"
-					/>
-				</Form>
+	return (
+		<>
+			<div class="w-full max-w-5xl mt-16">
+					<Form>
+						<input
+							name="q"
+							defaultValue={searchParamQuery}
+							placeholder="Search..."
+							class="w-full rounded-lg p-2 dark:text-purple-950 text-blue-600"
+						/>
+					</Form>
 			</div>
 			<div class="w-full max-w-5xl mt-16">
 				{posts.value.length === 0 && <p>No blog posts found</p>}
@@ -53,7 +53,7 @@ export default component$(() => {
 					</div>
 				))}
 			</div>
-    </>
+		</>
   );
 });
 
