@@ -1,24 +1,27 @@
 import { component$ } from "@builder.io/qwik";
-import { Form, type DocumentHead, useLocation } from "@builder.io/qwik-city";
-// import { getXataClient } from "~/xata";
+import { Form, type DocumentHead, useLocation, routeLoader$ } from "@builder.io/qwik-city";
+import { getXataClient } from "~/xata";
 
-// export const useBlogPosts = routeLoader$(async (e) => {
-// 	const xata = getXataClient();
-// 	const searchParamQuery = e.url.searchParams.get("q")
-// 	let rq = null;
-// 	if (searchParamQuery) {
-// 		const output = await xata.db.Posts.search(searchParamQuery, { fuzziness: 2 });
-// 		rq = output.records;
-// 	} else {
-// 		rq = await xata.db.Posts.getAll();
-// 	}
-// 	return rq;
-// });
+export const useBlogPosts = routeLoader$(async (e) => {
+	console.log('NEXT_PUBLIC_XATA_API_KEY:', e.env.get('NEXT_PUBLIC_XATA_API_KEY'))
+	console.log('XATA_API_KEY:', e.env.get('XATA_API_KEY'))
+	const xata = getXataClient();
+	const searchParamQuery = e.url.searchParams.get("q")
+	let rq = null;
+	if (searchParamQuery) {
+		const output = await xata.db.Posts.search(searchParamQuery, { fuzziness: 2 });
+		rq = output.records;
+	} else {
+		rq = await xata.db.Posts.getAll();
+	}
+	return rq;
+});
 
 export default component$(() => {
 	// const posts = useBlogPosts();
 	const loc = useLocation();
 	const searchParamQuery = loc.url.searchParams.get("q") || "";
+	console.log('output:', process.env.XATA_API_KEY)
 	return (
 		<>
 			<div class="w-full max-w-5xl mt-16">
