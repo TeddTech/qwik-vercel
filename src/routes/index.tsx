@@ -1,22 +1,22 @@
 import { component$ } from "@builder.io/qwik";
-import { Form, type DocumentHead, Link, useLocation, routeLoader$ } from "@builder.io/qwik-city";
-import { getXataClient } from "~/xata";
+import { Form, type DocumentHead, useLocation } from "@builder.io/qwik-city";
+// import { getXataClient } from "~/xata";
 
-export const useBlogPosts = routeLoader$(async (e) => {
-	const xata = getXataClient();
-	const searchParamQuery = e.url.searchParams.get("q")
-	let rq = null;
-	if (searchParamQuery) {
-		const output = await xata.db.Posts.search(searchParamQuery, { fuzziness: 2 });
-		rq = output.records;
-	} else {
-		rq = await xata.db.Posts.getAll();
-	}
-	return rq;
-});
+// export const useBlogPosts = routeLoader$(async (e) => {
+// 	const xata = getXataClient();
+// 	const searchParamQuery = e.url.searchParams.get("q")
+// 	let rq = null;
+// 	if (searchParamQuery) {
+// 		const output = await xata.db.Posts.search(searchParamQuery, { fuzziness: 2 });
+// 		rq = output.records;
+// 	} else {
+// 		rq = await xata.db.Posts.getAll();
+// 	}
+// 	return rq;
+// });
 
 export default component$(() => {
-	const posts = useBlogPosts();
+	// const posts = useBlogPosts();
 	const loc = useLocation();
 	const searchParamQuery = loc.url.searchParams.get("q") || "";
 	return (
@@ -32,7 +32,7 @@ export default component$(() => {
 					</Form>
 			</div>
 			<div class="w-full max-w-5xl mt-16">
-				{posts.value.length === 0 && <p>No blog posts found</p>}
+				{/* {posts.value.length === 0 && <p>No blog posts found</p>}
 				{posts.value.map((post) => (
 					<div key={post.id} class="mb-16">
 						<p class="text-xs mb-2 text-purple-950 dark:text-purple-200">
@@ -51,7 +51,7 @@ export default component$(() => {
 							Read more &rarr;
 						</Link>
 					</div>
-				))}
+				))} */}
 			</div>
 		</>
   );
