@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { Form, type DocumentHead, useLocation } from "@builder.io/qwik-city";
-import { env } from "process";
 // import { getXataClient } from "~/xata";
 
 // export const useBlogPosts = routeLoader$(async (e) => {
