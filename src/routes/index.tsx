@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Form, type DocumentHead, useLocation } from "@builder.io/qwik-city";
+import { env } from "process";
 // import { getXataClient } from "~/xata";
 
 // export const useBlogPosts = routeLoader$(async (e) => {
@@ -32,6 +33,10 @@ export default component$(() => {
 					</Form>
 			</div>
 			<div class="w-full max-w-5xl mt-16">
+			<p class="text-xl">{process.env['NEXT_PUBLIC_XATA_API_KEY']}</p>
+			<p class="text-xl">{process.env.NEXT_PUBLIC_XATA_API_KEY}</p>
+			<p class="text-xl">{process.env['XATA_API_KEY']}</p>
+			<p class="text-xl">{process.env.XATA_API_KEY}</p>
 				{/* {posts.value.length === 0 && <p>No blog posts found</p>}
 				{posts.value.map((post) => (
 					<div key={post.id} class="mb-16">
